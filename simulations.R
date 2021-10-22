@@ -38,7 +38,7 @@ simulate <- function(df, years.to.sim, number.of.sim, save=F, save.name='simulat
   
   if (save == T){
     simuls <- data.frame(simuls)
-    write.csv(simuls, save.name)
+    write.csv(simuls, save.name, row.names = FALSE)
   }
   
   return(anual.rents)
