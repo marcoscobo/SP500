@@ -9,7 +9,7 @@ sprintf('Rentabilidad anual media = %4f', (rent - 1) * 100)
 years.to.sim <- 25
 number.of.sim <- 1000
 
-anual.rents <- simulate(df, years.to.sim, number.of.sim, save=T)
+anual.rents <- simulate(df, years.to.sim, number.of.sim)
 
 ## DISTRIBUCION DE LAS RENTABILIDADES
 
