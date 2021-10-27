@@ -1,7 +1,7 @@
 simulate <- function(df, years.to.sim, number.of.sim, save=F, save.name='simulations.csv', plot.n=F, plot.l=F, cero.line=F){
   
   total.days <- length(df$Date)
-  days.to.sim <- 360 * years.to.sim
+  days.to.sim <- 252 * years.to.sim
   last.init <- total.days - days.to.sim
   
   simuls <- matrix(data=NA, nrow=days.to.sim, ncol=number.of.sim) 
@@ -10,7 +10,7 @@ simulate <- function(df, years.to.sim, number.of.sim, save=F, save.name='simulat
     last.day <- init.day + days.to.sim - 1
     sim.period <- init.day:last.day
     sim.sample <- sample(sim.period, replace=T)
-    sim.diff <- df$Diff_close[sim.sample]
+    sim.diff <- df$Diff_close_div[sim.sample]
     simuls[,i] <- cumprod(sim.diff)
   }
   rents <- simuls[days.to.sim,]
@@ -46,8 +46,8 @@ simulate <- function(df, years.to.sim, number.of.sim, save=F, save.name='simulat
 
 hist.rent <- function(df, verbose=F){
   
-  years <- length(df$Close) / 360
-  rent <- (df$Close[length(df$Close)] / df$Close[1]) ^ (1 / years)
+  years <- length(df$Close) / 252
+  rent <- df$Cum_Diff_close_div[length(df$Cum_Diff_close_div)] ^ (1 / years)
   
   return(rent)
 }

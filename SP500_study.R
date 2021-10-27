@@ -3,13 +3,18 @@ source("simulations.R")
 
 df <- read.csv("SP500.csv")
 
+#df$Date <- as.Date(df$Date)
+#df$Date = as.integer(gsub("-", "", df$Date))
+#a <- df$Date[length(df$Date)] - df$Date[1]
+#l <- as.numeric(difftime(df$Date[length(df$Date)], df$Date[1], units = 'days'))
+
 rent <- hist.rent(df, verbose=T)
 sprintf('Rentabilidad anual media = %4f', (rent - 1) * 100)
 
 years.to.sim <- 25
-number.of.sim <- 1000
+number.of.sim <- 5000
 
-anual.rents <- simulate(df, years.to.sim, number.of.sim)
+anual.rents <- simulate(df, years.to.sim, number.of.sim, plot.l=F, cero.line=T)
 
 ## DISTRIBUCION DE LAS RENTABILIDADES
 
@@ -31,22 +36,22 @@ ppcomp(list(fn, fl), legendtext = plot.legend)
 sprintf('Rentabilidad anual media: %4f', mean(anual.rents))
 
 # normal
-nprob <- pnorm(1, mean=fn$estimate[1], sd=fn$estimate[2]) * 100
+nprob <- pnorm(1, mean=fn$estimate[1], sd=fn$estimate[2])
 sprintf('Probabilidad de rent <= 1 a %i años: %4f', years.to.sim, nprob)
 
-nprob2 <- (pnorm(1.14, mean=fn$estimate[1], sd=fn$estimate[2]) - pnorm(1.06, mean=fn$estimate[1], sd=fn$estimate[2])) * 100
+nprob2 <- (pnorm(1.14, mean=fn$estimate[1], sd=fn$estimate[2]) - pnorm(1.06, mean=fn$estimate[1], sd=fn$estimate[2]))
 sprintf('Probabilidad de rent en (1.06,1.14) a %i años: %4f', years.to.sim, nprob2)
 
-nprob3 <- (1 - pnorm(1.05, mean=fn$estimate[1], sd=fn$estimate[2])) * 100
+nprob3 <- (1 - pnorm(1.05, mean=fn$estimate[1], sd=fn$estimate[2]))
 sprintf('Probabilidad de rent > 1.05 a %i años: %4f', years.to.sim, nprob3)
 
 
 # logistic
-lprob <- plogis(1, location=fl$estimate[1], scale=fl$estimate[2]) * 100
+lprob <- plogis(1, location=fl$estimate[1], scale=fl$estimate[2])
 sprintf('Probabilidad de rent <= 1 a %i años: %4f', years.to.sim, lprob)
 
-lprob2 <- (plogis(1.14, location=fl$estimate[1], scale=fl$estimate[2]) - plogis(1.06, location=fl$estimate[1], scale=fl$estimate[2])) * 100
+lprob2 <- (plogis(1.14, location=fl$estimate[1], scale=fl$estimate[2]) - plogis(1.06, location=fl$estimate[1], scale=fl$estimate[2]))
 sprintf('Probabilidad de rent en (1.06,1.14) a %i años: %4f', years.to.sim, lprob2)
 
-lprob3 <- (1 - plogis(1.05, location=fl$estimate[1], scale=fl$estimate[2])) * 100
+lprob3 <- (1 - plogis(1.05, location=fl$estimate[1], scale=fl$estimate[2]))
 sprintf('Probabilidad de rent > 1.05 a %i años: %4f', years.to.sim, lprob3)
