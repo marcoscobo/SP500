@@ -1,4 +1,4 @@
-simulate <- function(df, years.to.sim, number.of.sim, save=F, save.name='simulations.csv', plot.n=F, plot.l=F, cero.line=F){
+simulate <- function(df, years.to.sim, number.of.sim, save=F, plot.n=F, plot.l=F, cero.line=F){
   
   total.days <- length(df$Date)
   days.to.sim <- 252 * years.to.sim
@@ -38,7 +38,7 @@ simulate <- function(df, years.to.sim, number.of.sim, save=F, save.name='simulat
   
   if (save == T){
     simuls <- data.frame(simuls)
-    write.csv(simuls, save.name, row.names = FALSE)
+    write.csv(simuls, 'simulations.csv', row.names = FALSE)
   }
   
   return(anual.rents)

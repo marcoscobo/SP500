@@ -3,11 +3,6 @@ source("simulations.R")
 
 df <- read.csv("SP500.csv")
 
-#df$Date <- as.Date(df$Date)
-#df$Date = as.integer(gsub("-", "", df$Date))
-#a <- df$Date[length(df$Date)] - df$Date[1]
-#l <- as.numeric(difftime(df$Date[length(df$Date)], df$Date[1], units = 'days'))
-
 rent <- hist.rent(df, verbose=T)
 sprintf('Rentabilidad anual media = %4f', (rent - 1) * 100)
 
@@ -24,7 +19,7 @@ fn <- fitdist(anual.rents, "norm")
 fl <- fitdist(anual.rents, "logis")
 
 x11()
-par(mfrow = c(2, 2))
+par(mfrow = c(1, 2))
 plot.legend <- c("norm", "logis")
 denscomp(list(fn, fl), legendtext = plot.legend)
 qqcomp(list(fn, fl), legendtext = plot.legend)
@@ -55,3 +50,19 @@ sprintf('Probabilidad de rent en (1.06,1.14) a %i años: %4f', years.to.sim, lpr
 
 lprob3 <- (1 - plogis(1.05, location=fl$estimate[1], scale=fl$estimate[2]))
 sprintf('Probabilidad de rent > 1.05 a %i años: %4f', years.to.sim, lprob3)
+
+## PLOT
+
+probs <- c()
+for (year in 1:50){
+  anual.rents <- simulate(df, year, 5000)
+  fl <- fitdist(anual.rents, "logis")
+  probs <- c(probs, plogis(1, location=fl$estimate[1], scale=fl$estimate[2]))
+}
+
+for (year in seq(5, 50, by=5)){
+  print(probs[year])
+}
+
+x11()
+plot(probs, type='l')

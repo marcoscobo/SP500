@@ -7,6 +7,7 @@ days_year = 252
 start = dt.datetime(1920,1,1)
 end = dt.datetime.now()
 
+
 df_sp500 = web.DataReader('^GSPC', 'yahoo', start, end)
 
 
@@ -30,6 +31,7 @@ for year in range(2021, 1920, -1):
 
 df_sp500['Diff_close_div'] = df_sp500['Diff_close'] * df_sp500['Daily_div']
 df_sp500['Cum_Diff_close_div'] = np.cumprod(df_sp500['Diff_close_div'])
+
 
 df_sp500.to_csv('SP500.csv')
 # df_div.to_csv('divs.csv')
