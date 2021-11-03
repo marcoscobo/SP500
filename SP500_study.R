@@ -6,10 +6,14 @@ df <- read.csv("SP500.csv")
 rent <- hist.rent(df, verbose=T)
 sprintf('Rentabilidad anual media = %4f', (rent - 1) * 100)
 
-years.to.sim <- 25
-number.of.sim <- 5000
+years.to.sim <- 20
+number.of.sim <- 10000
 
-anual.rents <- simulate(df, years.to.sim, number.of.sim, plot.l=F, cero.line=T)
+anual.rents <- simulate(df, years.to.sim, number.of.sim, plot.n=T, plot.l=T)
+
+png(filename = 'rents.png', width=1920, height=1080)
+hist(anual.rents, breaks=seq(min(anual.rents) - 0.01, max(anual.rents) + 0.1, by=0.01))
+dev.off()
 
 ## DISTRIBUCION DE LAS RENTABILIDADES
 

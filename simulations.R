@@ -1,4 +1,4 @@
-simulate <- function(df, years.to.sim, number.of.sim, save=F, plot.n=F, plot.l=F, cero.line=F){
+simulate <- function(df, years.to.sim, number.of.sim, save=F, plot.n=F, plot.l=F, cero.line=T){
   
   total.days <- length(df$Date)
   days.to.sim <- 252 * years.to.sim
@@ -16,33 +16,44 @@ simulate <- function(df, years.to.sim, number.of.sim, save=F, plot.n=F, plot.l=F
   rents <- simuls[days.to.sim,]
   anual.rents <- rents ^ (1 / years.to.sim)
   
+  
+  
+  if (save == T){
+    write.csv(data.frame(simuls), 'simulations.csv', row.names = FALSE)
+  }
+  
   if (plot.n == T){
-    x11()
-    plot(simuls[,1], type='l', ylim=c(min(rents), max(rents)))
-    for (i in 2:1000){
+    #png(filename = 'graf_n.png', width=1920, height=1080)
+    #x11()
+    plot(simuls[,1], type='l', ylim=c(min(simuls), max(simuls)))
+    for (i in 2:number.of.sim){
       rgb <- sample(50:255, size=3)/255
       lines(simuls[,i], col=rgb(rgb[1], rgb[2], rgb[3]))
     }
+    if (cero.line == T){
+      abline(h=1, lwd=2, col='red')
+    }
+    #dev.off()
   }
+  
   if (plot.l == T){
-    x11()
-    plot(log(simuls[,1]), type='l', ylim=c(min(log(rents)), max(log(rents))))
-    for (i in 2:500){
+    #png(filename = 'graf_l.png', width=1920, height=1080)
+    #x11()
+    plot(log(simuls[,1]), type='l', ylim=c(min(log(simuls)), max(log(simuls))))
+    for (i in 2:number.of.sim){
       rgb <- sample(1:255, size=3)/255
       lines(log(simuls[,i]), col=rgb(rgb[1], rgb[2], rgb[3]))
     }
     if (cero.line == T){
       abline(h=0, lwd=2, col='red')
     }
-  }
-  
-  if (save == T){
-    simuls <- data.frame(simuls)
-    write.csv(simuls, 'simulations.csv', row.names = FALSE)
+    #dev.off()
   }
   
   return(anual.rents)
 }
+
+
 
 hist.rent <- function(df, verbose=F){
   
