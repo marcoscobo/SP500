@@ -29,4 +29,3 @@ df_sp500['Diff_close_div'] = df_sp500['Diff_close'] * df_sp500['Daily_div']
 df_sp500['Cum_Diff_close_div'] = np.cumprod(df_sp500['Diff_close_div'])
 
 df_sp500.to_csv('SP500.csv')
-# df_div.to_csv('divs.csv')

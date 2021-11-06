@@ -4,10 +4,10 @@ source("simulations.R")
 
 df <- read.csv("SP500.csv")
 
-years.to.sim <- 25
-number.of.sim <- 5000
+years.to.sim <- 20
+number.of.sim <- 1000
 
-anual.rents <- simulate(df, years.to.sim, number.of.sim, plot=F)
+anual.rents <- simulate(df, years.to.sim, number.of.sim, plot=T)
 
 hist(anual.rents, breaks=seq(min(anual.rents) - 0.01, max(anual.rents) + 0.01, by=0.01))
 
@@ -15,15 +15,20 @@ hist(anual.rents, breaks=seq(min(anual.rents) - 0.01, max(anual.rents) + 0.01, b
 
 ## Part II
 
+par(mfrow = c(2, 1))
+hist(anual.rents, breaks=seq(min(anual.rents) - 0.005, max(anual.rents) + 0.005, by=0.005), prob=T, main='Density Function')
+lines(density(anual.rents), col='red')
+plot(ecdf(anual.rents), col='red', col.01line=NULL, main='Cumulative Distribution Function')
+
+source("simulations.R")
+
 number.of.sim <- 1000000
 anual.rents <- simulate.apply(df, years.to.sim, number.of.sim, paral=T)
 
-
-x11(); par(mfrow = c(2, 1))
-hist(anual.rents, breaks=seq(min(anual.rents) - 0.005, max(anual.rents) + 0.005, by=0.005), prob=T)
+par(mfrow = c(2, 1))
+hist(anual.rents, breaks=seq(min(anual.rents) - 0.005, max(anual.rents) + 0.005, by=0.005), prob=T, main='Density Function')
 lines(density(anual.rents), col='red')
-plot(ecdf(anual.rents), col='red', col.01line=NULL)
-
+plot(ecdf(anual.rents), col='red', col.01line=NULL, main='Cumulative Distribution Function')
 
 calc.prob <- function(x, simuls){
   return(length(simuls[simuls <= x]) / length(simuls))
@@ -35,10 +40,12 @@ prob2 <- 1 - calc.prob(1.05, anual.rents)
 sprintf('Probabilidad de rent > 1.05 a %i años: %4f', years.to.sim, prob2)
 
 
-number.of.sim <- 10000
+number.of.sim <- 100000
 probs <- c()
 for (year in 1:60){
+  print(year)
   anual.rents <- simulate.apply(df, year, number.of.sim, paral=T)
   probs <- c(probs, calc.prob(1, anual.rents))
 }
-plot(probs, type='l')
+plot(probs, type='l', main='Probability of anual yield <= 0%')
+abline(h=0.01, lty=3, col='red')

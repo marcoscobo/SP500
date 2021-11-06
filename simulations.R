@@ -26,14 +26,12 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
   }
   
   if (plot == T){
-    x11()
     plot(simuls[,1], type='l', ylim=c(min(simuls), max(simuls)))
     for (i in 2:number.of.sim){
       rgb <- sample(50:255, size=3)/255
       lines(simuls[,i], col=rgb(rgb[1], rgb[2], rgb[3]))
     }
     abline(h=1, lwd=2, col='red')
-    x11()
     plot(log(simuls[,1]), type='l', ylim=c(min(log(simuls)), max(log(simuls))))
     for (i in 2:number.of.sim){
       rgb <- sample(1:255, size=3)/255
