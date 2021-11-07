@@ -8,6 +8,7 @@ years.to.sim <- 20
 number.of.sim <- 1000
 
 anual.rents <- simulate(df, years.to.sim, number.of.sim, plot=T)
+anual.rents <- anual.rents - 0.001
 
 hist(anual.rents, breaks=seq(min(anual.rents) - 0.01, max(anual.rents) + 0.01, by=0.01))
 
@@ -24,6 +25,7 @@ source("simulations.R")
 
 number.of.sim <- 1000000
 anual.rents <- simulate.apply(df, years.to.sim, number.of.sim, paral=T)
+anual.rents <- anual.rents - 0.001
 
 par(mfrow = c(2, 1))
 hist(anual.rents, breaks=seq(min(anual.rents) - 0.005, max(anual.rents) + 0.005, by=0.005), prob=T, main='Density Function')
@@ -39,12 +41,11 @@ sprintf('Probabilidad de rent <= 1 a %i años: %4f', years.to.sim, prob1)
 prob2 <- 1 - calc.prob(1.05, anual.rents)
 sprintf('Probabilidad de rent > 1.05 a %i años: %4f', years.to.sim, prob2)
 
-
 number.of.sim <- 100000
 probs <- c()
 for (year in 1:60){
   print(year)
-  anual.rents <- simulate.apply(df, year, number.of.sim, paral=T)
+  anual.rents <- simulate.apply(df, year, number.of.sim, paral=T) - 0.001
   probs <- c(probs, calc.prob(1, anual.rents))
 }
 plot(probs, type='l', main='Probability of anual yield <= 0%')
