@@ -1,5 +1,5 @@
 # ¿Es mejor el SP500 que tu banco para guardar tu dinero?
-Este repositorio almacena el código empleado en la redacción del artículo ...url... . En él simulamos el comportamiento futuro del índice bursátil SP500 durante un determinado periodo de tiempo para dar respuesta a preguntas como, ¿cuál es la probabilidad de acabar perdiendo dinero en un fondo indexado al SP500 en un plazo de, por ejemplo, 20 años?, ó ¿cuál es la probabilidad de obtener un rendimiento anual medio superior al $5\%$ anual?
+Este repositorio almacena el código empleado en la redacción del artículo ...url... . En él simulamos el comportamiento futuro del índice bursátil SP500 durante un determinado periodo de tiempo para dar respuesta a preguntas como, ¿cuál es la probabilidad de acabar perdiendo dinero en un fondo indexado al SP500 en un plazo de, por ejemplo, 20 años?, ó ¿cuál es la probabilidad de obtener un rendimiento anual medio superior al 5% anual?
 
 ## Datos empleados:
 
