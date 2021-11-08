@@ -3,7 +3,8 @@ Este repositorio almacena el código empleado en la redacción del artículo ...
 
 ## Autor:
 
-- Marcos Cobo Carrillo
+Marcos Cobo Carrillo
+www.linkedin.com/in/marcoscobocarrillo
 
 
 ## Datos empleados:
