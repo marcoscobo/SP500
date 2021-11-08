@@ -5,7 +5,7 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
   
   # Get the number of day we have historical data
   total.days <- length(df$Date)
-  # Calculate the number of days to simulate (a year has approximately 252 market opening days)
+  # Calculate the number of days to simulate (1 year has 252 market opening days aprox.)
   days.to.sim <- 252 * years.to.sim
   # Get the last possible starting day to simulate
   last.init <- total.days - days.to.sim
@@ -78,7 +78,7 @@ sim.apply <- function(x, df, years.to.sim){
   
   # Get the number of day we have historical data
   total.days <- length(df$Date)
-  # Calculate the number of days to simulate (a year has approximately 252 market opening days)
+  # Calculate the number of days to simulate (1 year has 252 market opening days aprox.)
   days.to.sim <- 252 * years.to.sim
   # Get the last possible starting day to simulate
   last.init <- total.days - days.to.sim
