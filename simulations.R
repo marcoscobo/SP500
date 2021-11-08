@@ -41,7 +41,7 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
   
   if (plot == T){
     # Initialize the plot with the first simulation
-    plot(simuls[,1], type='l', ylim=c(min(simuls), max(simuls)), main='Simulated yields', xlab='number of simulation', ylab='simulated yields', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+    plot(simuls[,1], type='l', ylim=c(min(simuls), max(simuls)), main='Simulated yields', xlab='number of simulation', ylab='simulated yields', cex.axis=2, cex.main=2, cex.lab=2)
     for (i in 2:number.of.sim){
       # Get a random color
       rgb <- sample(50:255, size=3)/255
@@ -51,7 +51,7 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
     # Add an horizontal line at the yield of 1
     abline(h=1, lwd=2, col='red')
     # Initialize the plot with the first simulation (log)
-    plot(log(simuls[,1]), type='l', ylim=c(min(log(simuls)), max(log(simuls))), main='Simulated yields', xlab='number of simulation', ylab='log(simulated yields)', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+    plot(log(simuls[,1]), type='l', ylim=c(min(log(simuls)), max(log(simuls))), main='Simulated yields', xlab='number of simulation', ylab='log(simulated yields)', cex.axis=2, cex.main=2, cex.lab=2)
     for (i in 2:number.of.sim){
       # Get a random color
       rgb <- sample(1:255, size=3)/255

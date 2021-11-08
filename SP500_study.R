@@ -17,7 +17,7 @@ anual.yields <- simulate(df, years.to.sim, number.of.sim, plot=T)
 anual.yields <- anual.yields - 0.001
 
 # Histogram of anual yields
-hist(anual.yields, breaks=seq(min(anual.yields) - 0.01, max(anual.yields) + 0.01, by=0.01), main='Distribution of anual yields', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+hist(anual.yields, breaks=seq(min(anual.yields) - 0.01, max(anual.yields) + 0.01, by=0.01), main='Distribution of anual yields', cex.axis=2, cex.main=2, cex.lab=2)
 
 
 
@@ -26,11 +26,11 @@ hist(anual.yields, breaks=seq(min(anual.yields) - 0.01, max(anual.yields) + 0.01
 # Divide the frame
 par(mfrow = c(2, 1))
 # Histogram of anual yields
-hist(anual.yields, breaks=seq(min(anual.yields) - 0.005, max(anual.yields) + 0.005, by=0.005), prob=T, main='Density Function', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+hist(anual.yields, breaks=seq(min(anual.yields) - 0.005, max(anual.yields) + 0.005, by=0.005), prob=T, main='Density Function', cex.axis=2, cex.main=2, cex.lab=2)
 # Add the density function
 lines(density(anual.yields), col='red')
 # Plot the cumulative distribution function
-plot(ecdf(anual.yields), col='red', col.01line=NULL, main='Cumulative Distribution Function', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+plot(ecdf(anual.yields), col='red', col.01line=NULL, main='Cumulative Distribution Function', cex.axis=2, cex.main=2, cex.lab=2)
 
 # Load simulations function
 source("simulations.R")
@@ -43,11 +43,11 @@ anual.yields <- simulate.apply(df, years.to.sim, number.of.sim, paral=T) - 0.001
 # Divide the frame
 par(mfrow = c(2, 1))
 # Histogram of anual yields
-hist(anual.yields, breaks=seq(min(anual.yields) - 0.005, max(anual.yields) + 0.005, by=0.005), prob=T, main='Density Function', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+hist(anual.yields, breaks=seq(min(anual.yields) - 0.005, max(anual.yields) + 0.005, by=0.005), prob=T, main='Density Function', cex.axis=2, cex.main=2, cex.lab=2)
 # Add the density function
 lines(density(anual.yields), col='red')
 # Plot the cumulative distribution function
-plot(ecdf(anual.yields), col='red', col.01line=NULL, main='Cumulative Distribution Function', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+plot(ecdf(anual.yields), col='red', col.01line=NULL, main='Cumulative Distribution Function', cex.axis=2, cex.main=2, cex.lab=2)
 
 # Define the function to return the prob of X <= x
 calc.prob <- function(x, simuls){
@@ -75,6 +75,6 @@ for (year in 1:60){
 # Reset the frame
 par(mfrow = c(1, 1))
 # Plot the probability curve
-plot(probs, type='l', main='Probability of anual yield <= 0%', xlab='number of years', ylab='Probability', cex.axis=1.5, cex.main=1.5, cex.lab=1.5)
+plot(probs, type='l', main='Probability of anual yield <= 0%', xlab='number of years', ylab='Probability', cex.axis=2, cex.main=2, cex.lab=2)
 # Add an horizontal line at the probability of 0.01
 abline(h=0.01, lty=3, col='red')
