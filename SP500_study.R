@@ -36,7 +36,7 @@ plot(ecdf(anual.yields), col='red', col.01line=NULL, main='Cumulative Distributi
 source("simulations.R")
 
 # Define the number of simulations to do
-number.of.sim <- 1000000
+number.of.sim <- 1e+6
 # Get the simulated anual yields and discount commissions
 anual.yields <- simulate.apply(df, years.to.sim, number.of.sim, paral=T) - 0.001
 
@@ -51,7 +51,7 @@ plot(ecdf(anual.yields), col='red', col.01line=NULL, main='Cumulative Distributi
 
 # Define the function to return the prob of X <= x
 calc.prob <- function(x, simuls){
-  # P(X<=x) = number of simulatios <=x / total simulations
+  # P(X<=x) = number of simulatios <= x / total simulations
   return(length(simuls[simuls <= x]) / length(simuls))
 }
 
@@ -63,7 +63,7 @@ prob2 <- 1 - calc.prob(1.05, anual.yields)
 sprintf('Probability of anual yield > 1.05 for %i years: %4f', years.to.sim, prob2)
 
 # Define the number of simulations to do
-number.of.sim <- 100000
+number.of.sim <- 1e+5
 # Initialize an empty vector to save the probabilities
 probs <- c()
 for (year in 1:60){
