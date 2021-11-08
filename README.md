@@ -1,13 +1,13 @@
-# ¿Es mejor el SP500 que tu banco para guardar tu dinero?
-Este repositorio almacena el código empleado en la redacción del artículo ...url... . En él simulamos el comportamiento futuro del índice bursátil SP500 durante un determinado periodo de tiempo para dar respuesta a preguntas como, ¿cuál es la probabilidad de acabar perdiendo dinero en un fondo indexado al SP500 en un plazo de, por ejemplo, 20 años?, ó ¿cuál es la probabilidad de obtener un rendimiento anual medio superior al 5% anual?
+# Is the SP500 a better place to keep your money than your bank?
+This repository stores the code used in writing the article ...url.... . In it we simulate the future behavior of the SP500 stock index over a certain period of time to answer questions such as, what is the probability of ending up losing money in a fund indexed to the SP500 in a period of, for example, 20 years?, or, what is the probability of obtaining an average annual return of more than 5% per year?
 
-## Datos empleados:
+## Data used:
 
-Se han extraido gran cantidad de datos  históricos sobre el SP500 del repositorio abierto proporcionado por Yahoo finance, asi como del sitio web https://www.multpl.com/s-p-500-dividend-yield/table/by-year.
+A large amount of historical data on the SP500 has been extracted from the open repository provided by Yahoo finance, as well as from the website https://www.multpl.com/s-p-500-dividend-yield/table/by-year.
 
-## Bibliotecas utilizadas:
+## Libraries used:
 
-En este trabajo usaremos los lenguajes de programación Python (versión 3.9) y R (version 3.6.3), asi como diferentes bibliotecas, entre las que destacan:
+In this article we will use the programming languages Python (version 3.9) and R (version 3.6.3), as well as different libraries, among which the following stand out:
 
 - NumPy
 - Pandas
@@ -15,7 +15,7 @@ En este trabajo usaremos los lenguajes de programación Python (versión 3.9) y 
 - Datetime
 - Parallel (R)
 
-Para la instalación de todas las bibliotecas de Python empleadas recomendamos instalar el archivo requirements.txt escribiendo el siguiente comando en la consola:
+For the installation of all the libraries used, we recommend installing the requirements.txt file by typing the following command into the shell:
 
 ```
 pip install -r requirements.txt
