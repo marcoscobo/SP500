@@ -12,9 +12,9 @@ df = pd.read_csv('SP500.csv')
 df = df[len(df) - (years_backtest * 252):].reset_index()
 df['Cum_Diff_close_div'] = df['Cum_Diff_close_div'] / df['Cum_Diff_close_div'][0]
 
-## Calculate historical anual rentability
+## Calculate historical annual rentability
 rent = df['Cum_Diff_close_div'][len(df) - 1] ** (1 / years_backtest)
-print('Historical anual rentability: {:.2f}%\n'.format((rent - 1) * 100))
+print('Historical annual rentability: {:.2f}%\n'.format((rent - 1) * 100))
 
 ## Backtesting (monthly)
 # Initialize the total amount with the increment of initial contribution

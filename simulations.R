@@ -16,7 +16,7 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
   }
   
   # Initialize an empty vector to save every simulated yield
-  anual.yields <- c()
+  annual.yields <- c()
   for (i in 1:number.of.sim){
     # Get the initial day of the simulation
     init.day <- sample(1:last.init, size=1) + 1
@@ -28,10 +28,10 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
     sim.sample <- sample(sim.period, replace=T)
     # Get the simulated increments
     sim.diff <- df$Diff_close_div[sim.sample]
-    # Calculate the simulated anual yield
-    anual.yield <- prod(sim.diff) ** (1 / years.to.sim)
-    # Add the anual yield to the vector
-    anual.yields <- c(anual.yields, anual.yield)
+    # Calculate the simulated annual yield
+    annual.yield <- prod(sim.diff) ** (1 / years.to.sim)
+    # Add the annual yield to the vector
+    annual.yields <- c(annual.yields, annual.yield)
     
     if (plot == T){
       # Add the simulation to the matrix
@@ -62,8 +62,8 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
     abline(h=0, lwd=2, col='red')
   }
   
-  # Return the anual yields vector
-  return(anual.yields)
+  # Return the annual yields vector
+  return(annual.yields)
 }
 
 
@@ -73,7 +73,7 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
 # Import the pararell library
 library(parallel)
 
-# Define the function simulate an anual yield
+# Define the function simulate an annual yield
 sim.apply <- function(x, df, years.to.sim){
   
   # Get the number of day we have historical data
@@ -93,11 +93,11 @@ sim.apply <- function(x, df, years.to.sim){
   sim.sample <- sample(sim.period, replace=T)
   # Get the simulated increments
   sim.diff <- df$Diff_close_div[sim.sample]
-  # Calculate the simulated anual yield
-  anual.yield <- prod(sim.diff) ** (1 / years.to.sim)
+  # Calculate the simulated annual yield
+  annual.yield <- prod(sim.diff) ** (1 / years.to.sim)
   
-  # Return the simulated anual yield
-  return(anual.yield)
+  # Return the simulated annual yield
+  return(annual.yield)
 }
 
 # Define the simulations function
@@ -106,15 +106,15 @@ simulate.apply <- function(df, years.to.sim, number.of.sim, paral=F){
   if (paral == T){
     # Make a cluster with all but 2 processor cores (leave 2 for other tasks)
     cl <- makeCluster(detectCores() - 2)
-    # Calculate the simulated anual yields
-    anual.yields <- parSapply(cl=cl, X=1:number.of.sim, FUN=sim.apply, df, years.to.sim)
+    # Calculate the simulated annual yields
+    annual.yields <- parSapply(cl=cl, X=1:number.of.sim, FUN=sim.apply, df, years.to.sim)
     # Stop the cluster
     stopCluster(cl)
   } else {
-    # Calculate the simulated anual yields
-    anual.yields <- sapply(X=1:number.of.sim, FUN=sim.apply, df, years.to.sim)
+    # Calculate the simulated annual yields
+    annual.yields <- sapply(X=1:number.of.sim, FUN=sim.apply, df, years.to.sim)
   }
   
-  # Return the anual yields vector
-  return(anual.yields)
+  # Return the annual yields vector
+  return(annual.yields)
 }

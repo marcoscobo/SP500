@@ -5,7 +5,7 @@ import pandas_datareader as web
 
 # Initialize start and end dates of the historical data
 # We start at 1800 to download as much data as possible
-start = dt.datetime(1800,1,1)
+start = dt.datetime(1800, 1, 1)
 end = dt.datetime.now()
 
 # Download the data
@@ -26,8 +26,8 @@ df_sp500['Cum_Diff_close'] = np.cumprod(df_sp500['Diff_close'])
 # Initialize the opening market days of a year
 days_year = 252
 
-# Load the anual dividens yield data
-df_div = pd.read_csv('divs_anual.csv')
+# Load the annual dividens yield data
+df_div = pd.read_csv('annual_div.csv')
 # Calculate the daily dividens yield
 df_div['Daily_yield'] = (df_div['Yield']  / 100 + 1) ** (1 / days_year)
 # Delete date and yield column of the dataframe
