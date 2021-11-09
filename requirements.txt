@@ -2,4 +2,4 @@ DateTime
 numpy
 pandas
 pandas-datareader
-tabulat
+tabulate
