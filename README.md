@@ -1,5 +1,5 @@
 # Why SP500 is better to store value than your bank
-This repository stores the code used in writing the article ...url.... . In it we simulate the future behavior of the SP500 stock index over a certain period of time to answer questions such as, what is the probability of ending up losing money in a fund indexed to the SP500 in a period of, for example, 20 years?, or, what is the probability of obtaining an average annual return of more than 5% per year? ...
+This repository stores the code used in writing the article ...url.... . In it we simulate the future behavior of the SP500 stock index over a certain period of time to answer questions such as, what is the probability of ending up losing money in a fund indexed to the SP500 in a period of, for example, 20 years?, or, what is the probability of obtaining an average annual return of more than 5% per year?...
 
 ## Data used:
 
