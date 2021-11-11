@@ -4,7 +4,7 @@ import pandas as pd
 import pandas_datareader as web
 
 # Initialize start and end dates of the historical data
-# We start at 1800 to download as much data as possible
+# We start at 1800 to download as much data as possible, if you want start later you can
 start = dt.datetime(1800, 1, 1)
 end = dt.datetime.now()
 
