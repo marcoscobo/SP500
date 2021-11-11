@@ -7,7 +7,7 @@ A large amount of historical data on the SP500 has been extracted from the open 
 
 ## Libraries used:
 
-In this article we will use the programming languages Python (version 3.9) and R (version 3.6.3), as well as different libraries, among which the following stand out:
+In this article we will use the programming languages Python (version 3.8) and R (version 3.6.3), as well as different libraries, among which the following stand out:
 
 - NumPy
 - Pandas
