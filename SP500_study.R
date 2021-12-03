@@ -72,7 +72,6 @@ for (year in 1:60){
   # Add the probability to the vector
   probs <- c(probs, calc.prob(1, annual.yields))
 }
-
 # Reset the frame
 par(mfrow = c(1, 1))
 # Plot the probability curve
