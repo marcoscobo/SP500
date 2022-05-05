@@ -1,7 +1,7 @@
 ## Part I
 
 # Define the simulations function
-simulate <- function(df, years.to.sim, number.of.sim, plot=F){
+simulate <- function(df, years.to.sim, number.of.sim, plot=F, save=F){
   
   # Get the number of day we have historical data
   total.days <- length(df$Date)
@@ -33,7 +33,7 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
     # Add the annual yield to the vector
     annual.yields <- c(annual.yields, annual.yield)
     
-    if (plot == T){
+    if (plot == T || save == T){
       # Add the simulation to the matrix
       simuls[,i] <- cumprod(sim.diff)
     }
@@ -60,6 +60,10 @@ simulate <- function(df, years.to.sim, number.of.sim, plot=F){
     }
     # Add an horizontal line at the yield of 1 (log(1)=0)
     abline(h=0, lwd=2, col='red')
+  }
+
+  if (save == T){
+    write.csv(simuls,'simulations.csv', row.names=F)
   }
   
   # Return the annual yields vector
